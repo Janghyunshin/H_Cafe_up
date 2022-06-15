@@ -1,0 +1,123 @@
+* {
+    margin: 0 auto;
+    padding: 0;
+    list-style: none;
+    font-family: 'Jua', sans-serif;
+}
+
+
+body {
+    padding: 0;
+    margin: 0;
+    border: 0;
+    color: #333333;
+    
+}
+
+header {
+    color: #ffffff;
+}
+
+.container-fluid {
+    height: 70px;
+}
+
+.container-fluid img {
+    height: 70px;
+    width: 70px;
+}
+
+.container-fluid .navbar-brand {
+    margin-left: 10px;
+}
+
+.nav-link.active {
+    margin-right: 20px;
+}
+
+.nav-link.dropdown-toggle {
+    margin-right: 20px;
+}
+
+.icon-link{
+    width: 500px;
+    margin: 0;
+}
+
+.icon-link img {
+    margin-left: 20px;
+    float: right;
+    height: 35px;
+    width: 35px;
+}
+
+main {
+    padding: 0;
+    margin-top: 30px;
+}
+
+
+.main_products {
+    margin-top: 50px;
+    text-align: center;
+}
+
+.container {
+    margin-top: 50px;
+}
+
+.m_products_list {
+    text-align: center;
+    font-size: 18px;
+}
+
+.m_products_list img {
+    width: 300px;
+    height: 300px;
+    margin-left: 30px;
+    margin-bottom: 30px;
+}
+
+footer {
+    height: 170px;
+    margin-top: 30px;
+    background-color: black;
+    color: #ffffff;
+}
+
+.footer_left {
+    float: left;
+    margin-left: 100px;
+}
+
+.footer_left img{
+    height: 170px;
+    width: 170px;
+}
+
+.footer_center {
+    margin-top: 15px;
+    float: left;
+    line-height: 15px;
+    margin-left: 100px;
+    font-size: 15px;
+}
+
+.footer_right {
+    float: left;
+    line-height: 25px;
+    margin-left: 100px;
+    font-size: 15px;
+}
+
+.footer_sns {
+    float: right;
+    margin-right: 100px;
+}
+
+.footer_sns img {
+    height: 65px;
+    width: 65px;
+    display: inline-block;
+    margin-right: 5px;
+}

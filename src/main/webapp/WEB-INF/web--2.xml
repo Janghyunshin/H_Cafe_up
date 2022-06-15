@@ -1,0 +1,216 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://xmlns.jcp.org/xml/ns/javaee" xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_4_0.xsd" id="WebApp_ID" version="4.0">
+  <display-name>p_Hpcafe</display-name>
+  <welcome-file-list>
+    <welcome-file>index.html</welcome-file>
+    <welcome-file>index.jsp</welcome-file>
+    <welcome-file>index.htm</welcome-file>
+    <welcome-file>default.html</welcome-file>
+    <welcome-file>default.jsp</welcome-file>
+    <welcome-file>default.htm</welcome-file>
+  </welcome-file-list>
+  
+   <!-- 세션 유지 시간 설정 (분)-->
+   <session-config>
+   	<session-timeout>20</session-timeout>
+   </session-config>
+  
+  <!-- 오라클 데이터 베이스 접속 정보 -->
+  <context-param>
+    <param-name>OracleDriver</param-name>
+    <param-value>oracle.jdbc.OracleDriver</param-value>
+  </context-param>
+  <context-param>
+    <param-name>OracleURL</param-name>
+    <param-value>jdbc:oracle:thin:@localhost:1521:XE</param-value>
+  </context-param>
+  <context-param>
+    <param-name>OracleId</param-name>
+    <param-value>hr2</param-value>
+  </context-param>
+  <context-param>
+    <param-name>OraclePwd</param-name>
+    <param-value>1234</param-value>
+  </context-param>
+  
+  <!-- 한글 깨짐 방지를 위한 설정 (이 프로젝트의 모든 페이지에 대해서 설정) -->
+  <filter>
+    <filter-name>SetCharacterEncoding</filter-name>
+    <filter-class>org.apache.catalina.filters.SetCharacterEncodingFilter</filter-class>
+    <init-param>
+      <param-name>encoding</param-name>
+      <param-value>UTF-8</param-value>
+    </init-param>
+  </filter>
+  <filter-mapping>
+    <filter-name>SetCharacterEncoding</filter-name>
+    <url-pattern>/*</url-pattern>
+  </filter-mapping>
+  
+  <!-- 서블릿 (servlet): *.java 파일을 html로 출력
+				     요즘은 서블릿은 controller를 뜻하기도 함 -->
+  
+<!-- 멤버 서블릿(Controller) 매핑 설정 -->
+  <servlet>
+  	<display-name>MemberLoginController</display-name>
+  	<servlet-name>log</servlet-name>
+  	<servlet-class>com.member.action.MemberLoginController</servlet-class>
+  </servlet>
+  <servlet-mapping>
+  	<servlet-name>log</servlet-name>
+  	<url-pattern>/h_login/login.do</url-pattern>
+  </servlet-mapping>
+
+  <servlet>
+  	<display-name>MemberLogoutController</display-name>
+  	<servlet-name>logout</servlet-name>
+  	<servlet-class>com.member.action.MemberLogoutController</servlet-class>
+  </servlet>
+  <servlet-mapping>
+  	<servlet-name>logout</servlet-name>
+  	<url-pattern>/h_login/logout.do</url-pattern>
+  </servlet-mapping>
+
+  <servlet>
+  	<display-name>MemberUpdateController</display-name>
+  	<servlet-name>update</servlet-name>
+  	<servlet-class>com.member.action.MemberUpdateController</servlet-class>
+  </servlet>
+  <servlet-mapping>
+  	<servlet-name>update</servlet-name>
+  	<url-pattern>/h_login/update.do</url-pattern>
+  </servlet-mapping>
+
+  <servlet>
+  	<display-name>MemberListController</display-name>
+  	<servlet-name>memberList</servlet-name>
+  	<servlet-class>com.member.action.MemberListController</servlet-class>
+  </servlet>
+  <servlet-mapping>
+  	<servlet-name>memberList</servlet-name>
+  	<url-pattern>/h_login/memberList.do</url-pattern>
+  </servlet-mapping>
+
+  <servlet>
+  	<display-name>MemberJoinController</display-name>
+  	<servlet-name>join</servlet-name>
+  	<servlet-class>com.member.action.MemberJoinController</servlet-class>
+  </servlet>
+  <servlet-mapping>
+  	<servlet-name>join</servlet-name>
+  	<url-pattern>/h_login/join.do</url-pattern>
+  </servlet-mapping>
+  
+  <servlet>
+  	<display-name>MemberViewController</display-name>
+  	<servlet-name>view</servlet-name>
+  	<servlet-class>com.member.action.MemberViewController</servlet-class>
+  </servlet>
+  <servlet-mapping>
+  	<servlet-name>view</servlet-name>
+  	<url-pattern>/h_login/view.do</url-pattern>
+  </servlet-mapping>    
+  
+  <servlet>
+  	<display-name>MemberDetailController</display-name>
+  	<servlet-name>detail</servlet-name>
+  	<servlet-class>com.member.action.MemberDetailController</servlet-class>
+  </servlet>
+  <servlet-mapping>
+  	<servlet-name>detail</servlet-name>
+  	<url-pattern>/h_login/detail.do</url-pattern>
+  </servlet-mapping>  
+  
+  <servlet>
+  	<display-name>MemberDeleteController</display-name>
+  	<servlet-name>delete</servlet-name>
+  	<servlet-class>com.member.action.MemberDeleteController</servlet-class>
+  </servlet>
+  <servlet-mapping>
+  	<servlet-name>delete</servlet-name>
+  	<url-pattern>/h_login/delete.do</url-pattern>
+  </servlet-mapping>
+
+<!-- 게시판 서블릿(Controller) 매핑 설정 -->
+  <servlet>
+  	<display-name>BoardAddController</display-name>
+  	<servlet-name>add</servlet-name>
+  	<servlet-class>com.board.action.BoardAddController</servlet-class>
+  </servlet>
+  <servlet-mapping>
+  	<servlet-name>add</servlet-name>
+  	<url-pattern>/h_board/add.do</url-pattern>
+  </servlet-mapping>
+  
+  <servlet>
+  	<display-name>BoardDeleteController</display-name>
+  	<servlet-name>b_delete</servlet-name>
+  	<servlet-class>com.board.action.BoardDeleteController</servlet-class>
+  </servlet>
+  <servlet-mapping>
+  	<servlet-name>b_delete</servlet-name>
+  	<url-pattern>/h_board/b_delete.do</url-pattern>
+  </servlet-mapping>
+
+  <servlet>
+  	<display-name>BoardDetailController</display-name>
+  	<servlet-name>b_detail</servlet-name>
+  	<servlet-class>com.board.action.BoardDetailController</servlet-class>
+  </servlet>
+  <servlet-mapping>
+  	<servlet-name>b_detail</servlet-name>
+  	<url-pattern>/h_board/b_detail.do</url-pattern>
+  </servlet-mapping>
+
+  <servlet>
+  	<display-name>BoardListController</display-name>
+  	<servlet-name>b_list</servlet-name>
+  	<servlet-class>com.board.action.BoardListController</servlet-class>
+  </servlet>
+  <servlet-mapping>
+  	<servlet-name>b_list</servlet-name>
+  	<url-pattern>/h_board/b_list.do</url-pattern>
+  </servlet-mapping>
+
+  <servlet>
+  	<display-name>BoardModifyController</display-name>
+  	<servlet-name>b_modify</servlet-name>
+  	<servlet-class>com.board.action.BoardModifyController</servlet-class>
+  </servlet>
+  <servlet-mapping>
+  	<servlet-name>b_modify</servlet-name>
+  	<url-pattern>/h_board/b_modify.do</url-pattern>
+  </servlet-mapping>
+  
+   <servlet>
+  	<display-name>BoardModifyViewController</display-name>
+  	<servlet-name>modifyView</servlet-name>
+  	<servlet-class>com.board.action.BoardModifyViewController</servlet-class>
+  </servlet>
+  <servlet-mapping>
+  	<servlet-name>modifyView</servlet-name>
+  	<url-pattern>/h_board/modifyView.do</url-pattern>
+  </servlet-mapping> 
+  
+  <servlet>
+  	<display-name>BoardReplyController</display-name>
+  	<servlet-name>b_reply</servlet-name>
+  	<servlet-class>com.board.action.BoardReplyController</servlet-class>
+  </servlet>
+  <servlet-mapping>
+  	<servlet-name>b_reply</servlet-name>
+  	<url-pattern>/h_board/b_reply.do</url-pattern>
+  </servlet-mapping>  
+
+  <servlet>
+  	<display-name>BoardReplyViewController</display-name>
+  	<servlet-name>b_replyView</servlet-name>
+  	<servlet-class>com.board.action.BoardReplyViewController</servlet-class>
+  </servlet>
+  <servlet-mapping>
+  	<servlet-name>b_replyView</servlet-name>
+  	<url-pattern>/h_board/b_replyView.do</url-pattern>
+  </servlet-mapping>  
+ 
+</web-app>
+

@@ -1,0 +1,219 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://xmlns.jcp.org/xml/ns/javaee" xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_4_0.xsd" id="WebApp_ID" version="4.0">
+  <display-name>p_Hpcafe</display-name>
+  <welcome-file-list>
+    <welcome-file>index.html</welcome-file>
+    <welcome-file>index.jsp</welcome-file>
+    <welcome-file>index.htm</welcome-file>
+    <welcome-file>default.html</welcome-file>
+    <welcome-file>default.jsp</welcome-file>
+    <welcome-file>default.htm</welcome-file>
+  </welcome-file-list>
+  
+   <!-- 세션 유지 시간 설정 (분)-->
+   <session-config>
+   	<session-timeout>20</session-timeout>
+   </session-config>
+  
+  <!-- 오라클 데이터 베이스 접속 정보 -->
+  <context-param>
+    <param-name>OracleDriver</param-name>
+    <param-value>oracle.jdbc.OracleDriver</param-value>
+  </context-param>
+  <context-param>
+    <param-name>OracleURL</param-name>
+    <param-value>jdbc:oracle:thin:@localhost:1521:XE</param-value>
+  </context-param>
+  <context-param>
+    <param-name>OracleId</param-name>
+    <param-value>hr2</param-value>
+  </context-param>
+  <context-param>
+    <param-name>OraclePwd</param-name>
+    <param-value>1234</param-value>
+  </context-param>
+  
+  <!-- 한글 깨짐 방지를 위한 설정 (이 프로젝트의 모든 페이지에 대해서 설정) -->
+  <filter>
+    <filter-name>SetCharacterEncoding</filter-name>
+    <filter-class>org.apache.catalina.filters.SetCharacterEncodingFilter</filter-class>
+    <init-param>
+      <param-name>encoding</param-name>
+      <param-value>UTF-8</param-value>
+    </init-param>
+  </filter>
+  <filter-mapping>
+    <filter-name>SetCharacterEncoding</filter-name>
+    <url-pattern>/*</url-pattern>
+  </filter-mapping>
+  
+  <!-- 서블릿 (servlet): *.java 파일을 html로 출력
+				     요즘은 서블릿은 controller를 뜻하기도 함 -->
+  
+<!-- 멤버 서블릿(Controller) 매핑 설정 -->
+  <servlet>
+  	<display-name>MemberLoginController</display-name>
+  	<servlet-name>log</servlet-name>
+  	<servlet-class>com.member.action.MemberLoginController</servlet-class>
+  </servlet>
+  <servlet-mapping>
+  	<servlet-name>log</servlet-name>
+  	<url-pattern>/h_login/login.do</url-pattern>
+  </servlet-mapping>
+
+  <servlet>
+  	<display-name>MemberLogoutController</display-name>
+  	<servlet-name>logout</servlet-name>
+  	<servlet-class>com.member.action.MemberLogoutController</servlet-class>
+  </servlet>
+  <servlet-mapping>
+  	<servlet-name>logout</servlet-name>
+  	<url-pattern>/h_login/logout.do</url-pattern>
+  </servlet-mapping>
+
+  <servlet>
+  	<display-name>MemberUpdateController</display-name>
+  	<servlet-name>update</servlet-name>
+  	<servlet-class>com.member.action.MemberUpdateController</servlet-class>
+  </servlet>
+  <servlet-mapping>
+  	<servlet-name>update</servlet-name>
+  	<url-pattern>/h_login/update.do</url-pattern>
+  </servlet-mapping>
+
+  <servlet>
+  	<display-name>MemberListController</display-name>
+  	<servlet-name>memberList</servlet-name>
+  	<servlet-class>com.member.action.MemberListController</servlet-class>
+  </servlet>
+  <servlet-mapping>
+  	<servlet-name>memberList</servlet-name>
+  	<url-pattern>/h_login/memberList.do</url-pattern>
+  </servlet-mapping>
+
+  <servlet>
+  	<display-name>MemberJoinController</display-name>
+  	<servlet-name>join</servlet-name>
+  	<servlet-class>com.member.action.MemberJoinController</servlet-class>
+  </servlet>
+  <servlet-mapping>
+  	<servlet-name>join</servlet-name>
+  	<url-pattern>/h_login/join.do</url-pattern>
+  </servlet-mapping>
+  
+  <servlet>
+  	<display-name>MemberViewController</display-name>
+  	<servlet-name>view</servlet-name>
+  	<servlet-class>com.member.action.MemberViewController</servlet-class>
+  </servlet>
+  <servlet-mapping>
+  	<servlet-name>view</servlet-name>
+  	<url-pattern>/h_login/view.do</url-pattern>
+  </servlet-mapping>    
+  
+  <servlet>
+  	<display-name>MemberDetailController</display-name>
+  	<servlet-name>detail</servlet-name>
+  	<servlet-class>com.member.action.MemberDetailController</servlet-class>
+  </servlet>
+  <servlet-mapping>
+  	<servlet-name>detail</servlet-name>
+  	<url-pattern>/h_login/detail.do</url-pattern>
+  </servlet-mapping>  
+  
+  <servlet>
+  	<display-name>MemberDeleteController</display-name>
+  	<servlet-name>delete</servlet-name>
+  	<servlet-class>com.member.action.MemberDeleteController</servlet-class>
+  </servlet>
+  <servlet-mapping>
+  	<servlet-name>delete</servlet-name>
+  	<url-pattern>/h_login/delete.do</url-pattern>
+  </servlet-mapping>
+
+<!-- 게시판 서블릿(Controller) 매핑 설정 -->
+  <!-- MVCboard의 글목록 보기 Controller 매핑 -->
+  <servlet>
+    <servlet-name>HPBoardList</servlet-name>
+    <servlet-class>com.board.cont.ListController</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>HPBoardList</servlet-name>
+    <url-pattern>/h_board/list.do</url-pattern>
+  </servlet-mapping>
+  
+    <!-- MVCboard의 글내용 보기 Controller 매핑 -->
+  <servlet>
+    <servlet-name>HPBoardView</servlet-name>
+    <servlet-class>com.board.cont.ViewController</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>HPBoardView</servlet-name>
+    <url-pattern>/h_board/view.do</url-pattern>
+  </servlet-mapping>
+  
+  
+      <!-- MVCboard의 글내용 수정 Controller 매핑 -->
+  <servlet>
+    <servlet-name>HPBoardEdit</servlet-name>
+    <servlet-class>com.board.cont.EditController</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>HPBoardEdit</servlet-name>
+    <url-pattern>/h_board/edit.do</url-pattern>
+  </servlet-mapping>
+  
+  
+        <!-- MVCboard의 글내용 쓰기 Controller 매핑 -->
+  <servlet>
+    <servlet-name>HPBoardWrite</servlet-name>
+    <servlet-class>com.board.cont.WriteController</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>HPBoardWrite</servlet-name>
+    <url-pattern>/h_board/write.do</url-pattern>
+  </servlet-mapping>
+  
+  
+  <!-- 업로드할 파일 용량 제한 -->
+  <context-param>
+  	<param-name>maxPostSize</param-name>
+  	<param-value>1024000</param-value>
+  </context-param>
+  
+       <!-- MVCboard의 다운르도 Controller 매핑 -->
+  <servlet>
+    <servlet-name>HPBoardDownload</servlet-name>
+    <servlet-class>com.board.cont.DownloadController</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>HPBoardDownload</servlet-name>
+    <url-pattern>/h_board/download.do</url-pattern>
+  </servlet-mapping>
+  
+  
+     <!-- MVCboard의 글 수정/삭제 Controller 매핑 -->
+  <servlet>
+    <servlet-name>HPBoardPass</servlet-name>
+    <servlet-class>com.board.cont.PassController</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>HPBoardPass</servlet-name>
+    <url-pattern>/h_board/pass.do</url-pattern>
+  </servlet-mapping>
+  
+  
+  
+  
+  <!--  페이징 처리를 위한 설정(변수값 할당) 출력 레코드수 :10개, 페이지수 :5 -->
+  <context-param>
+  	<param-name>POSTS_PER_PAGE</param-name>
+  	<param-value>5</param-value>
+  </context-param>
+  
+  <context-param>
+  	<param-name>PAGES_PER_BLOCK</param-name>
+  	<param-value>2</param-value>
+  </context-param>
+ 
+</web-app>
