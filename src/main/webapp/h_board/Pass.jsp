@@ -6,7 +6,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>파일 첨부형 게시판</title>
+<title>비밀번호 확인 페이지</title>
     <link rel="stylesheet"  type="text/css"  href="#">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
     <!-- 부트 스트랩 링크 -->
@@ -31,7 +31,7 @@ function validateForm(form) {
 <%@ include file ="../h_main/header.jsp" %>
 <center>
 	<br><br>	
-	<h2>파일 첨부형 게시판 - 비밀번호 검증(Pass)</h2>
+	<h2> 비밀번호를 입력해 주세요</h2>
 	<br><br>
 </center>
 
@@ -47,9 +47,9 @@ function validateForm(form) {
 	</tr>
 	<tr>
 		<td colspan="2" align="center">
-			<button type="submit">검증하기</button> &nbsp;&nbsp;
-			<button type="reset">RESET</button> &nbsp;&nbsp;
-			<button type="button" onclick="location.href='../h_board/list.do';">
+			<button type="submit" class="btn btn-success"> 작성 완료</button> &nbsp;&nbsp;
+			<button type="reset" class="btn btn-primary">RESET</button> &nbsp;&nbsp;
+			<button type="button" class="btn btn-secondary" onclick="location.href='../h_board/list.do';">
 				목록 바로가기
 			</button>
 		</td>

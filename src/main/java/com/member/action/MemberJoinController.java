@@ -58,11 +58,10 @@ public class MemberJoinController extends HttpServlet {
 			
 			out.println("<script>");
 			out.println("alert('회원가입 성공!');");
-			out.println("location.href='login.jsp';");
+			out.println("location.href='loginForm.jsp';");
 			out.println("</script>");
+			out.flush();
 			
-			
-			JSFunction.alertLocation(response, "성공", "/h_login/loginForm.jsp");
 			// 회원가입 성공시 콘솔 창에 정보 출력
 			System.out.println("회원가입 성공");
 		}

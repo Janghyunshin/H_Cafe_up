@@ -21,6 +21,8 @@ public class EditController extends HttpServlet{
 
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+		HttpSession session = req.getSession();
+		
 		String idx =req.getParameter("idx");
 		HcDAO dao = new HcDAO();
 		HcDTO dto = dao.selectView(idx);

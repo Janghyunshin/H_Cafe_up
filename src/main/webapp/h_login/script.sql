@@ -7,8 +7,10 @@ CREATE TABLE boardMember(
     Member_name VARCHAR2(15),
     Member_age NUMBER,
     Member_address VARCHAR2(30),
-    Member_tel VARCHAR2(30)
+    Member_tel VARCHAR2(30),
 );
 
 --테이블 조회
 SELECT * FROM boardMember;
+
+drop table boardMember;

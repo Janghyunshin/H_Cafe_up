@@ -26,12 +26,11 @@
 	
 	 if (id == null) {
 	%>
-		<a href = "../h_login/login.do"> 로그인 </a> &nbsp;
-		<a href = "../h_login/joinForm.jsp"> 회원가입</a>
+		로그인 상태가 아닙니다 ! <br>
 	<% 
 	 } else {
 	%>
-		<%=id %> 님이 로그인 하셨습니다.
+		<%=id %> 님 환영합니다.
 	<%
 	 }
 	%>
@@ -57,7 +56,7 @@
 					<!-- 검색어 자동완성 제거 -->
 					<input type ="text" name="searchWord" autocomplete="off"/>&nbsp; 
 					
-					<input type ="submit" value="검색하기"/>
+					<input type ="submit" class="btn btn-secondary" value="검색하기"/>
 				</td>
 			</tr>
 		</table>
@@ -118,7 +117,7 @@
             <td>
                 ${ map.pagingImg }
             </td>
-            <td width="100"><button type="button"
+            <td width="100"><button type="button" class="btn btn-success"
                 onclick="location.href='../h_board/write.do';">글쓰기</button></td>
         </tr>
     </table>

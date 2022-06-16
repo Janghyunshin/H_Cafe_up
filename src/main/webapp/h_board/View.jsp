@@ -73,14 +73,16 @@
 	<!-- 하단 메뉴버튼	 -->
 	<tr>
 		<td colspan="4" align="center">
-			<button type="button" onclick="location.href='../h_board/pass.do?mode=edit&idx=${param.idx}';">
-				수정하기
+			<button type="button"class="btn btn-warning" onclick="location.href='../h_board/pass.do?mode=edit&idx=${param.idx}';">
+				수정하기 
 			</button>
-			<button type="button" onclick="location.href='../h_board/pass.do?mode=delete&idx=${param.idx}';">
+			&nbsp;
+			<button type="button" class="btn btn-danger" onclick="location.href='../h_board/pass.do?mode=delete&idx=${param.idx}';">
 				삭제하기
 			</button>
-			<button type="button" onclick="location.href='../h_board/list.do';">
-				목록 바로가기
+			&nbsp;
+			<button type="button" class="btn btn-dark" onclick="location.href='../h_board/list.do';">
+				목록 바로가기 
 			</button>
 		</td>
 	</tr>

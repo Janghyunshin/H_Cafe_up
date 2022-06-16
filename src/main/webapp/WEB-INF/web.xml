@@ -51,6 +51,7 @@
 				     요즘은 서블릿은 controller를 뜻하기도 함 -->
   
 <!-- 멤버 서블릿(Controller) 매핑 설정 -->
+ <!-- h_login 의 로그인 Controller 매핑 -->
   <servlet>
   	<display-name>MemberLoginController</display-name>
   	<servlet-name>log</servlet-name>
@@ -61,6 +62,7 @@
   	<url-pattern>/h_login/login.do</url-pattern>
   </servlet-mapping>
 
+ <!-- h_login 의 로그아웃 Controller 매핑 -->
   <servlet>
   	<display-name>MemberLogoutController</display-name>
   	<servlet-name>logout</servlet-name>
@@ -71,26 +73,7 @@
   	<url-pattern>/h_login/logout.do</url-pattern>
   </servlet-mapping>
 
-  <servlet>
-  	<display-name>MemberUpdateController</display-name>
-  	<servlet-name>update</servlet-name>
-  	<servlet-class>com.member.action.MemberUpdateController</servlet-class>
-  </servlet>
-  <servlet-mapping>
-  	<servlet-name>update</servlet-name>
-  	<url-pattern>/h_login/update.do</url-pattern>
-  </servlet-mapping>
-
-  <servlet>
-  	<display-name>MemberListController</display-name>
-  	<servlet-name>memberList</servlet-name>
-  	<servlet-class>com.member.action.MemberListController</servlet-class>
-  </servlet>
-  <servlet-mapping>
-  	<servlet-name>memberList</servlet-name>
-  	<url-pattern>/h_login/memberList.do</url-pattern>
-  </servlet-mapping>
-
+ <!-- h_login 의 회원가입 Controller 매핑 -->
   <servlet>
   	<display-name>MemberJoinController</display-name>
   	<servlet-name>join</servlet-name>
@@ -100,27 +83,19 @@
   	<servlet-name>join</servlet-name>
   	<url-pattern>/h_login/join.do</url-pattern>
   </servlet-mapping>
-  
+
+ <!-- h_login 의 회원정보 수정 Controller 매핑 -->
   <servlet>
-  	<display-name>MemberViewController</display-name>
-  	<servlet-name>view</servlet-name>
-  	<servlet-class>com.member.action.MemberViewController</servlet-class>
+  	<display-name>MemberUpdateController</display-name>
+  	<servlet-name>update</servlet-name>
+  	<servlet-class>com.member.action.MemberUpdateController</servlet-class>
   </servlet>
   <servlet-mapping>
-  	<servlet-name>view</servlet-name>
-  	<url-pattern>/h_login/view.do</url-pattern>
-  </servlet-mapping>    
-  
-  <servlet>
-  	<display-name>MemberDetailController</display-name>
-  	<servlet-name>detail</servlet-name>
-  	<servlet-class>com.member.action.MemberDetailController</servlet-class>
-  </servlet>
-  <servlet-mapping>
-  	<servlet-name>detail</servlet-name>
-  	<url-pattern>/h_login/detail.do</url-pattern>
-  </servlet-mapping>  
-  
+  	<servlet-name>update</servlet-name>
+  	<url-pattern>/h_login/update.do</url-pattern>
+  </servlet-mapping>
+ 
+ <!-- h_login 의 회원 탈퇴  Controller 매핑 -->
   <servlet>
   	<display-name>MemberDeleteController</display-name>
   	<servlet-name>delete</servlet-name>
@@ -129,10 +104,10 @@
   <servlet-mapping>
   	<servlet-name>delete</servlet-name>
   	<url-pattern>/h_login/delete.do</url-pattern>
-  </servlet-mapping>
-
+  </servlet-mapping>  
+  
 <!-- 게시판 서블릿(Controller) 매핑 설정 -->
-  <!-- MVCboard의 글목록 보기 Controller 매핑 -->
+  <!-- h_board의 글목록 보기 Controller 매핑 -->
   <servlet>
     <servlet-name>HPBoardList</servlet-name>
     <servlet-class>com.board.cont.ListController</servlet-class>
@@ -142,7 +117,7 @@
     <url-pattern>/h_board/list.do</url-pattern>
   </servlet-mapping>
   
-    <!-- MVCboard의 글내용 보기 Controller 매핑 -->
+  <!-- h_board 의 글내용 보기 Controller 매핑 -->
   <servlet>
     <servlet-name>HPBoardView</servlet-name>
     <servlet-class>com.board.cont.ViewController</servlet-class>
@@ -153,7 +128,7 @@
   </servlet-mapping>
   
   
-      <!-- MVCboard의 글내용 수정 Controller 매핑 -->
+ <!-- h_board의 글내용 수정 Controller 매핑 -->
   <servlet>
     <servlet-name>HPBoardEdit</servlet-name>
     <servlet-class>com.board.cont.EditController</servlet-class>
@@ -164,7 +139,7 @@
   </servlet-mapping>
   
   
-        <!-- MVCboard의 글내용 쓰기 Controller 매핑 -->
+  <!-- h_board의 글내용 쓰기 Controller 매핑 -->
   <servlet>
     <servlet-name>HPBoardWrite</servlet-name>
     <servlet-class>com.board.cont.WriteController</servlet-class>
@@ -175,13 +150,13 @@
   </servlet-mapping>
   
   
-  <!-- 업로드할 파일 용량 제한 -->
+  <!-- h_board 의 업로드할 파일 용량 제한 -->
   <context-param>
   	<param-name>maxPostSize</param-name>
   	<param-value>1024000</param-value>
   </context-param>
   
-       <!-- MVCboard의 다운르도 Controller 매핑 -->
+  <!-- h_board 의 다운르도 Controller 매핑 -->
   <servlet>
     <servlet-name>HPBoardDownload</servlet-name>
     <servlet-class>com.board.cont.DownloadController</servlet-class>
@@ -192,7 +167,7 @@
   </servlet-mapping>
   
   
-     <!-- MVCboard의 글 수정/삭제 Controller 매핑 -->
+     <!-- h_board의 글 수정/삭제 Controller 매핑 -->
   <servlet>
     <servlet-name>HPBoardPass</servlet-name>
     <servlet-class>com.board.cont.PassController</servlet-class>
@@ -205,7 +180,7 @@
   
   
   
-  <!--  페이징 처리를 위한 설정(변수값 할당) 출력 레코드수 :10개, 페이지수 :5 -->
+  <!--  페이징 처리를 위한 설정(변수값 할당) 출력 레코드수 :5개, 페이지수 :5 -->
   <context-param>
   	<param-name>POSTS_PER_PAGE</param-name>
   	<param-value>5</param-value>
@@ -213,7 +188,7 @@
   
   <context-param>
   	<param-name>PAGES_PER_BLOCK</param-name>
-  	<param-value>2</param-value>
+  	<param-value>5</param-value>
   </context-param>
  
 </web-app>

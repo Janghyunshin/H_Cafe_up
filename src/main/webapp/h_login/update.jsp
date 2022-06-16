@@ -19,17 +19,16 @@
 	<section id="regForm" class="login_form" align="center">
 		<h1> 회원가입 </h1>
 		<p>
-			<center> 멤버가 되어 새로운 소식
+			<center> 수정 페이지 입니다
 					<hr>
-					다양한 혜택을 만나보세요.
+					아이디는 변경 불가능합니다.
 			</center>
 		</p>
 		
-		<form action="join.do" method = "post">
+		<form action="update.do" method = "post">
 	   		<div class="int_area">
 				<label for="member_id">아이디</label>
-	          	<input name="member_id" type="text" required="required"
-					placeholder="사용하실 ID를 입력해주세요 (수신 가능 E-mail)" autocomplete="off" />
+	          	<input name="member_id" type="text" value ="<%=session.getAttribute("id")%>" readonly />
 	        </div>
 			<div class="int_area">
 				<label for="member_pw">비밀번호</label>
@@ -55,8 +54,8 @@
 			<tr>
 				<td colspan="2" align="center">
 				<br>
-					<input type="submit" value="회원가입"/> &nbsp;
-					<input type="reset" value="다시 작성"/> &nbsp;
+					<input type="submit" value="내용 수정"/> &nbsp;
+					<input type="button" value=" 회원 탈퇴" onclick="location.href='delete.do'"/> &nbsp;
 					<input type="button" value="로그인" onclick="location.href='login.do'"/>
 				</td>
 			</tr>

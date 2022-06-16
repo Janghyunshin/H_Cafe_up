@@ -1,17 +1,17 @@
 package com.member.hp;
 
-import java.io.Serializable;
+import java.util.Date;
 
-public class MemberDTO implements Serializable {
+public class MemberDTO {
 	private String member_id, member_pw, member_name;
 	private int member_age;
 	private String member_address, member_tel;
+
 	
 	public MemberDTO() {}
 	
 	public MemberDTO(String member_id, String member_pw, String member_name, int member_age, String member_address,
 			String member_tel) {
-		super();
 		this.member_id = member_id;
 		this.member_pw = member_pw;
 		this.member_name = member_name;
@@ -20,6 +20,7 @@ public class MemberDTO implements Serializable {
 		this.member_tel = member_tel;
 	}
 	
+
 	//getter setter
 
 	public String getMember_id() {

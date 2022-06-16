@@ -62,11 +62,12 @@
                     <a href="#"><img src="images/cart.png" alt="장바구니"></a>
                     -->
                     <%if (session.getAttribute("id")==null) { %>
-					<a href="../h_login/joinForm.jsp"> 회원가입 </a></li> &nbsp; &nbsp; &nbsp;
-					<a href="../h_login/loginForm.jsp"> 로그인 </a></li> &nbsp; &nbsp; &nbsp;
+					<a href="../h_login/joinForm.jsp"> 회원가입 </a> &nbsp; &nbsp; &nbsp;
+					<a href="../h_login/loginForm.jsp"> 로그인 </a> &nbsp; &nbsp; &nbsp;
 					
 					<%}else { %>
 					<span><%=session.getAttribute("id") %> 님 반갑습니다 &nbsp; &nbsp; </span>
+					<a href="../h_login/update.do" > 정보수정 &nbsp; &nbsp; </a>
 					<a href="../h_login/logout.do" > 로그아웃 &nbsp; &nbsp; </a>
 					<% } %>
 					

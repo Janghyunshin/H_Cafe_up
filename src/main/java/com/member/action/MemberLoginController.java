@@ -34,7 +34,7 @@ public class MemberLoginController extends HttpServlet {
 		dto.setMember_pw(request.getParameter("member_pw"));
 
 		MemberDAO dao = new MemberDAO();
-		int result = dao.isMember(dto);
+		int result = dao.isMember(dto.getMember_id(), dto.getMember_pw());
 		
 		response.setContentType("text/html; charset=utf-8"); 
 		PrintWriter out = response.getWriter();
@@ -43,6 +43,7 @@ public class MemberLoginController extends HttpServlet {
 				out.println("alert('비밀번호가 일치하지 않습니다!');");
 				out.println("location.href = 'login.do';");
 			out.println("</script>");
+			out.flush();
 			//response.sendRedirect("/h_login/loginform.jsp");
 
 		} else if(result == -1) {
@@ -50,6 +51,7 @@ public class MemberLoginController extends HttpServlet {
 				out.println("alert('아이디가 존재하지 않습니다!');");
 				out.println("location.href = 'login.do';");
 			out.println("</script>");
+			out.flush();
 			//response.sendRedirect("/h_login/loginform.jsp");
 
 		} else {	//로그인 성공
@@ -57,8 +59,10 @@ public class MemberLoginController extends HttpServlet {
 			session.setAttribute("id", dto.getMember_id()); //바인딩 객체
 			out.println("<script>");
 			out.println("alert('로그인에 성공했습니다!');");
+			out.println("location.href = '../h_main/index.jsp';");
 			out.println("</script>");
-			response.sendRedirect("../h_main/index.jsp");
+			out.flush();
+			//response.sendRedirect("../h_main/index.jsp");
 		}
 	
 	

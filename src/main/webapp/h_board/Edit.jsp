@@ -5,7 +5,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>파일 첨부형 게시판</title>
+<title>게시물 수정 페이지</title>
     <link rel="stylesheet"  type="text/css"  href="#">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
     <!-- 부트 스트랩 링크 -->
@@ -47,7 +47,7 @@ function checkSize(input) {
 <%@ include file ="../h_main/header.jsp" %>
 <center>
 	<br><br>	
-	<h2>파일 첨부형 게시판 -수정하기(Edit)</h2>
+	<h2> 게시물 수정 페이지 (작성자명 수정 가능) </h2>
 	<br><br>
 </center>
 <!--  폼에서 파일을 업로드 할때 
@@ -64,7 +64,11 @@ function checkSize(input) {
 	<tr>
 		<td>작성자</td>
 		<td>
+			<%if(session.getAttribute("id") != null) { %>
+			<input type="text" name="name" style="width:150px;" value ="<%=session.getAttribute("id")%>" />
+			<%}else{ %>
 			<input type="text" name="name" style="width:150px;"/>
+			<%} %>
 		</td>
 	</tr>
 	<tr>

@@ -2,7 +2,7 @@ package com.board.hp;
 
 import java.util.ArrayList;
 
-import com.board.action.DBConnPool;
+import com.common.DBConnPool;
 
 public class BoardDAO extends DBConnPool {
 	

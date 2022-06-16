@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
  <%@ page import="com.board.cont.WriteController" %>
+  <%@ taglib prefix ="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -52,34 +53,60 @@ function checkSize(input) {
 </head>
 
 <body>
+<!-- footer Include -->
 <%@ include file ="../h_main/header.jsp" %>
+
+<!-- 상단 우측에 세션 id값 받아오기 : id값이 null이면 로그인 상태가 아니라고 표시 /
+							  id값이 null이 아니면 정보 메세지 표시  -->
+<div style = "text-align:right; margin-right:100px;">
+<br>
+	<%
+	 String id =  (String) session.getAttribute("id");
+	
+	 if (id == null) {
+	%>
+		로그인 상태가 아닙니다 ! <br>
+	<% 
+	 } else {
+	%>
+		글 수정을 통해 다른 이름으로 <br> 작성하실 수 있습니다 !
+	<%
+	 }
+	%>
+	</div>
+
+
 <center>
 	<br><br>	
-	<h2>파일 첨부형 게시판 -글쓰기</h2>
+	<h2> 리뷰 글쓰기 (파일 첨부 가능) </h2>
 	<br><br>
 </center>
 
 <!-- Form 태그 내에서 input type ="file" 이 존재하면 반드시 
 	method="post"
-	enctype = "multipart/form-data"  <==라이브러리를 통해서 업로드 지원
+	enctype = "multipart/form-data"  <== 라이브러리를 통해서 업로드 지원
 	
 	<주의> 	:request.getParameter("name") : request 객체를 사용하면 안됨.
 			:라이브러리에서 지원해주는 개체의 메소드로 Form의 변수값을 받아야 한다.
 				참고:라이브러리 마다 메소드이름이 다를수 있다.
 
-
 -->
-
-
 
 
 <form name="writeFrm" method="post" enctype="multipart/form-data" 
 		action="../h_board/write.do" onsubmit="return validateFrom(this);">
+		
 <table border="1" width="90%" class = "table table-bordered">
 	<tr>
 		<td>작성자</td>
 		<td>
+		<!-- 세션으로 받아온 id 값이 있으면 id가 수정불가능한 상태로 자동으로 불러옴 -->
+			<%if(session.getAttribute("id") != null) { %>
+			<input type="text" name="name" style="width:150px;" value ="<%=session.getAttribute("id")%>" readonly/>
+		<!--  id값이 없으면 작성이 가능한 입력창을 불려옴 -->
+			<%}else{ %>
 			<input type="text" name="name" style="width:150px;"/>
+			<%} %>
 		</td>
 	</tr>
 	<tr>
@@ -108,9 +135,9 @@ function checkSize(input) {
 	</tr>
 	<tr>
 		<td colspan="2" align="center">
-			<button type="submit">작성 완료</button> &nbsp;&nbsp;
-			<button type="reset">RESET</button> &nbsp;&nbsp;
-			<button type="button" onclick="location.href='../h_board/list.do';">
+			<button type="submit" class="btn btn-success">작성 완료</button> &nbsp;&nbsp;
+			<button type="reset" class="btn btn-primary"> Reset</button> &nbsp;&nbsp;
+			<button type="button" class="btn btn-secondary" onclick="location.href='../h_board/list.do';">
 				목록 바로가기
 			</button>
 		</td>

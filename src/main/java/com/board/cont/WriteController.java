@@ -10,6 +10,7 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import com.oreilly.servlet.MultipartRequest;
 
@@ -25,6 +26,9 @@ public class WriteController extends HttpServlet {
 		//Get 방식 요청 처리
 		//List.jsp(view 페이지) 에서 글쓰기를 클릭 했을때 글쓰기 뷰페이지(Write.jsp)
 		
+		
+		// 추가 *1*
+		HttpSession session = req.getSession();
 		//뷰페이지로 이동
 		req.getRequestDispatcher("/h_board/Write.jsp").forward(req, resp);
 		
@@ -57,7 +61,7 @@ public class WriteController extends HttpServlet {
 		}
 		
 		//2.파일 업로드 외 처리(form의 변수 값처리)===================================
-			//폼에서 넘겨받은 값을 받아서 DTO(VO)에 Setter 주입을 하고 DAO에 Insert 매소드에 던져좀
+			//폼에서 넘겨받은 값을 받아서 DTO(VO)에 Setter 주입을 하고 DAO에 Insert 매소드에 던져줌
 		
 		
 		HcDTO dto = new HcDTO();
