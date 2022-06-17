@@ -18,7 +18,9 @@ public class MemberDeleteController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		// 세션 값을 받기 위해
 		HttpSession session = request.getSession();
+		// 뷰 페이지로 이동 
 		request.getRequestDispatcher("/h_login/delete.jsp").forward(request, response);
 	}
 
@@ -36,6 +38,8 @@ public class MemberDeleteController extends HttpServlet {
 		int result = dao.deleteMember(dto.getMember_id(), dto.getMember_pw());
 		
 		response.setContentType("text/html; charset=utf-8"); 
+		
+		// PrintWriter 객체 생성 
 		PrintWriter out = response.getWriter();
 
 
@@ -48,7 +52,7 @@ public class MemberDeleteController extends HttpServlet {
 			System.out.println(result);
 			session.invalidate();
 			
-			out.flush();
+			out.flush(); 	// flush() 하지 않을시 PrintWriter 가 작동되지 않음
 			
 		} else { 		// 탈퇴 실패
 				out.println("<script>");
@@ -57,7 +61,7 @@ public class MemberDeleteController extends HttpServlet {
 				out.println("</script>");
 				System.out.println(result);
 				
-				out.flush();	
+				out.flush(); // flush() 하지 않을시 PrintWriter 가 작동되지 않음
 			
 		}
 		

@@ -67,7 +67,7 @@ public class HcDAO extends DBConnPool {
 			ps.setString(2, map.get("end").toString());
 			rs= ps.executeQuery(); //DB에서 Select한 결과값을 rs에 저장
 			
-			//rs의 저장돈 값을 DTO에 저장 ==> DTO 객체를 List에 add
+			//rs에 저장된 값을 DTO에 저장 ==> DTO 객체를 List에 add
 			while(rs.next()) {
 				HcDTO dto = new HcDTO();
 				dto.setIdx(rs.getString(1));
@@ -93,9 +93,6 @@ public class HcDAO extends DBConnPool {
 		return board;	//board 는 DTO 객체를 저장하고 있다.
 		
 	}
-	
-	
-	
 	
 	//목록 검색 (Select)	:주어진 일련번호에 해당 하는 값을 DTO에 담아 반환한다.(한 페이지 read)
 	//ViewController 요청을 처리
@@ -131,7 +128,6 @@ public class HcDAO extends DBConnPool {
 		return dto;
 	}
 	
-	
 	//주어진 일련 번호에 해당하는 게시물의 조회수를 1씩 증가시켜줌 
 	public void updateVisitCount(String idx) {
 		String query ="UPDATE hpboard SET visitcount= visitcount+1 WHERE idx=?";
@@ -148,9 +144,6 @@ public class HcDAO extends DBConnPool {
 		}
 	}
 	
-	
-	
-	
 	//다운로드 카운트 증가
 	public void downCountPlus(String idx) {
 		String sql = "UPDATE hpboard SET downcount= downcount+1 WHERE idx=?";
@@ -162,7 +155,7 @@ public class HcDAO extends DBConnPool {
 		} catch (Exception e) {
 			
 		}
-	}
+	} 	// downCountPlus() 종료
 	
 	//비밀번호를 확인 하는 메소드 (입력한 비밀 번호가 DB의 값과 일치하는지 확인)
 	public boolean confirmPassword(String pass, String idx) {
@@ -187,18 +180,10 @@ public class HcDAO extends DBConnPool {
 			System.out.println("비밀번호가 일치하지 않습니다");
 		}
 		
-		
-		
 		return isCorr;
 		
-		
-		
-	}
-	
-	
-	
-	
-	
+	}	//confirmPassword() 종료
+
 	
 	//데이터 삽입 (Insert)
 	
@@ -222,9 +207,9 @@ public class HcDAO extends DBConnPool {
 			e.printStackTrace();
 		}
 		
-		
 		return result;	//result : Insert 성공시 0> , 실패시 : 0
-	}
+		
+	}	// insertWrite() 종료
 	
 	//데이터 수정 (Update)
 	public int updatePost(HcDTO dto) {
@@ -252,7 +237,8 @@ public class HcDAO extends DBConnPool {
 		}
 		
 		return result;	//result : Insert 성공시 0> , 실패시 : 0
-	}
+		
+	} 	// updatePost 종료
 	
 	//데이터 삭제 (Delete)
 	public int deletePost(String idx ) {
@@ -270,11 +256,8 @@ public class HcDAO extends DBConnPool {
 		}
 		
 		return result;	//result : Insert 성공시 0> , 실패시 : 0
-	}
-	
-	
-	
-	
+		
+	}	// deletePost 종료
 	
 
-}
+}	// class 종료

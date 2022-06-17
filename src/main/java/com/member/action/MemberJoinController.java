@@ -20,7 +20,6 @@ public class MemberJoinController extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
 	}
-
 	
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
@@ -35,38 +34,34 @@ public class MemberJoinController extends HttpServlet {
 		dto.setMember_tel(request.getParameter("member_tel"));
 		
 		MemberDAO dao = new MemberDAO();
-//		boolean result = dao.joinMember(dto);
 		int succ = dao.joinMember(dto);
-		System.out.println("테스트:" + succ);
+		//System.out.println("테스트:" + succ);
 		
 		response.setContentType("text/html; charset=utf-8");
+		// PrintWriter 객체 생성
 		PrintWriter out = response.getWriter();
-//		if(result == false) {
 		if(succ == 0) {
-			System.out.println("실패");
 			
 			out.println("<script>alert('회원가입 실패!');");
 			out.println("location.href='join.do';</script>");
 			
-			JSFunction.alertBack(response, "실패");
 			// 회원가입 실패시 콘솔 창에 정보 출력
 			System.out.println("회원가입 실패");
-		} else {
-			System.out.println("성공");
-			// 현재 out.println 먹통
 			
+			out.flush(); 	// flush() 실행하지 않을시 PrintWriter가 작동되지 않음
+			
+		} else {
 			
 			out.println("<script>");
 			out.println("alert('회원가입 성공!');");
 			out.println("location.href='loginForm.jsp';");
 			out.println("</script>");
-			out.flush();
+			out.flush();	// flush() 실행하지 않을시 PrintWriter가 작동되지 않음
 			
 			// 회원가입 성공시 콘솔 창에 정보 출력
 			System.out.println("회원가입 성공");
 		}
 		
-		request.getRequestDispatcher("/h_login/joinForm.jsp").forward(request, response);
 
 		
 		

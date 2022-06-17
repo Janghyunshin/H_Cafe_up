@@ -66,8 +66,6 @@ public class ListController extends HttpServlet {
 		map.put("start", start);
 		map.put("end", end);
 		
-		
-		
 		/* 페이징 처리 부분 end */
 		
 		//게시물 목록을 받아오기 (DAO 객체에 작업을 전달)
@@ -90,8 +88,6 @@ public class ListController extends HttpServlet {
 		req.setAttribute("boardLists", boardLists);	//DB에서 Select한 결과값
 		req.setAttribute("map", map);
 		req.getRequestDispatcher("/h_board/List.jsp").forward(req, resp);
-		
-		
 		
 	}
 

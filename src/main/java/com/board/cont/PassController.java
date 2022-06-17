@@ -23,8 +23,6 @@ public class PassController extends HttpServlet {
 		req.setAttribute("mode", req.getParameter("mode"));
 		req.getRequestDispatcher("/h_board/Pass.jsp").forward(req, resp);
 		
-		
-		
 	}
 
 	@Override
@@ -59,14 +57,6 @@ public class PassController extends HttpServlet {
 			JSFunction.alertBack(resp, "비밀번호가 일치하지 않습니다.");
 		}
 		
-		
-		
-		
-		
-		
-		
 	}
-	
-	
 
 }

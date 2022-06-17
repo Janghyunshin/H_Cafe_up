@@ -33,7 +33,7 @@
             </div>      
         </form>
         <div class="caption">
-        	<a href="">비밀번호 찾기</a>
+        	<a href="../h_main/index.jsp">홈 화면으로 이동</a>
         	<!-- 비밀번호 찾기 -->
         	<p></p>
        		 멤버가 아니세요? <a href="../h_login/joinForm.jsp"> 회원가입 </a>

@@ -29,7 +29,7 @@
     <main>
     <!-- 메인 시작  -->
         <div class="main_products">
-            <h2>도시락</h2>
+            <h2>보울</h2>
         </div>
         <div class="container">
             <!-- 부트스트랩 그리드 시작  -->
@@ -97,9 +97,10 @@
         <!-- 부트스트랩 그리드 종료 -->
     </main>
     <!-- 메인 종료 -->
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
-<!-- 부트 스트랩 소스 -->
 
 <%@ include file ="footer.jsp" %>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
+<!-- 부트 스트랩 소스 -->
 </body>
 </html>

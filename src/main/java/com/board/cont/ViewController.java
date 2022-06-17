@@ -7,9 +7,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-
 public class ViewController extends HttpServlet {
-
 
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
@@ -36,12 +34,9 @@ public class ViewController extends HttpServlet {
 		req.getRequestDispatcher("/h_board/View.jsp").forward(req, resp);
 	}
 
-
 	@Override
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		//Post 요청시 처리 블락
 		
-//		System.out.println("ViewController 작동잘됨 (Post 요청)");
 	}
-	
 }

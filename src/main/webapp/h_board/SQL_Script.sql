@@ -2,16 +2,16 @@
 
 
 CREATE TABLE hpboard (
-    idx NUMBER PRIMARY KEY,
-    name VARCHAR2(50) NOT NULL,
-    title VARCHAR2(200) NOT NULL,
-    content VARCHAR2(2000) NOT NULL,
-    postdate DATE DEFAULT sysdate NOT NULL,
-    ofile VARCHAR2(200),
-    sfile VARCHAR2(50),
-    downcount NUMBER(5) DEFAULT 0 NOT NULL,
-    pass VARCHAR2(50) NOT NULL,
-    visitcount NUMBER DEFAULT 0 NOT NULL
+    idx NUMBER PRIMARY KEY,						-- 번호
+    name VARCHAR2(50) NOT NULL,					-- 이름
+    title VARCHAR2(200) NOT NULL,				-- 제목
+    content VARCHAR2(2000) NOT NULL,			-- 내용
+    postdate DATE DEFAULT sysdate NOT NULL,		-- 게시일
+    ofile VARCHAR2(200),						-- 첨부파일명
+    sfile VARCHAR2(50),							-- 바뀐이름
+    downcount NUMBER(5) DEFAULT 0 NOT NULL,		-- 다운로드 수 
+    pass VARCHAR2(50) NOT NULL,					-- 비밀번호
+    visitcount NUMBER DEFAULT 0 NOT NULL		-- 조회 수 
 );
 
 desc hpboard;

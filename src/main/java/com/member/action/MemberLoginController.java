@@ -26,8 +26,6 @@ public class MemberLoginController extends HttpServlet {
 	}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-	
-		
 		
 		MemberDTO dto = new MemberDTO();
 		dto.setMember_id(request.getParameter("member_id"));
@@ -37,6 +35,7 @@ public class MemberLoginController extends HttpServlet {
 		int result = dao.isMember(dto.getMember_id(), dto.getMember_pw());
 		
 		response.setContentType("text/html; charset=utf-8"); 
+		// Printwriter 객체 생성
 		PrintWriter out = response.getWriter();
 		if(result == 0) {
 			out.println("<script>");

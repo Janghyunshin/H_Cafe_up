@@ -1,6 +1,5 @@
 package com.member.hp;
 
-
 import java.util.Base64;
 import java.util.Base64.Decoder;
 import java.util.Base64.Encoder;
@@ -9,8 +8,6 @@ import com.common.DBConnPool;
 
 public class MemberDAO extends DBConnPool{  //DB 연결
 	
-			
-
 	//MemberDAO에서 객체를 리턴하는 메소드 
 	private static MemberDAO instance = new MemberDAO();
 	
@@ -28,9 +25,8 @@ public class MemberDAO extends DBConnPool{  //DB 연결
 		
 		try {
 			//Form에서 넘겨받은 Password를 DB에 저장할때 암호화 
-				//orgPass : Form 넘겨 받은 password
+				//orgPass : Form에서 넘겨 받은 password
 			String orgPass = dto.getMember_pw();
-		
 		
 			//인코딩
 			byte[] targetBytes = orgPass.getBytes();
@@ -44,8 +40,6 @@ public class MemberDAO extends DBConnPool{  //DB 연결
 			String decodedTxt = new String(decodedBytes);
 			
 			// SQL 문장 작성
-			
-			
 			
 			// try-catch 블록 작성 후 PreapareStatement 설정
 			
@@ -64,14 +58,15 @@ public class MemberDAO extends DBConnPool{  //DB 연결
 				
 			} catch (Exception e) {
 				e.printStackTrace();
-				System.out.println("회원가입 예외 발생!");
+				System.out.println("회원가입 예외 발생!" + e);
 				
 			} finally {
 				// instance.close();
 			}
 
 			return succ;
-		} //joinMember()
+			
+		} 	//joinMember() 종료
 		
 		// 2.  isMember : 회원 여부 : 폼에서 넘겨 받은 ID와 비밀번호를 DB를 통해 확인.
 			// 사용자 인증처리, DB의 정보를 수정할때 , DB의 정보를 삭제 할때. 
@@ -102,7 +97,7 @@ public class MemberDAO extends DBConnPool{  //DB 연결
 					byte[] decodedBytes = decoder.decode(dbpasswd);
 					String decodedTxt = new String(decodedBytes);		
 					
-					if (orgPass.equals(decodedTxt)) {
+					if (orgPass.equals(decodedTxt)) {	// DB에서 가져온 비밀번호를 디코딩 후 비교
 						result = 1;  // 폼에서 넘겨온 패스워드와 DB에서 가져온 패스워드가 일치 할때 x: 1 
 					} else {
 						result = 0;   // 패스워드가 일치하지 않을때 
@@ -113,7 +108,7 @@ public class MemberDAO extends DBConnPool{  //DB 연결
 			} catch (Exception e) {
 				
 				e.printStackTrace();
-				System.out.println("아이디와 패스워드 인증에 실패 했습니다.");
+				System.out.println("아이디와 패스워드 인증에 실패 했습니다." + e);
 				
 			} finally {
 				// instance.close();
@@ -121,7 +116,7 @@ public class MemberDAO extends DBConnPool{  //DB 연결
 			
 			return result;
 			
-		} 	//isMember()
+		} 	//isMember() 종료
 		
 		//3. 아이디 중복 체크 (confirmId.jsp) : 아이디 중복을 확인하는 메소드 
 		public int confirmID (String member_id) {
@@ -142,7 +137,8 @@ public class MemberDAO extends DBConnPool{  //DB 연결
 				
 					System.out.println(member_id + "는 DB에 존재하는 ID 입니다.");
 					result = 1;
-				} else {  			//아이디가 DB에 존재하지 않는 경우
+					
+				} else {  			// 아이디가 DB에 존재하지 않는 경우
 					
 					System.out.println(member_id + " 는 DB에 존재하지 않는 ID 입니다. ");
 					result = -1 ; 
@@ -150,12 +146,13 @@ public class MemberDAO extends DBConnPool{  //DB 연결
 			
 			} catch (Exception e) {
 				e.printStackTrace();
-				System.out.println("ID 중복 체크중 예외 발생");
+				System.out.println("ID 중복 체크중 예외 발생" + e);
 			} finally {
 				// instance.close;
 			}
 			return result;
-		}
+			
+		}	// confirmID () 종료
 					
 		// 4. 회원정보 수정 (modifyForm.jsp) : DB에서 회원 정보의값을 가져오는 메소드 	: 당장 안쓰지만 추후 추가 가능 
 		
@@ -163,7 +160,7 @@ public class MemberDAO extends DBConnPool{  //DB 연결
 			MemberDTO dto = null;
 			
 			try {
-				
+				//orgPass : Form에서 넘겨 받은 password
 				String orgPass = member_pw;
 				
 				String sql = "SELECT * FROM boardMember WHERE member_id = ?"; 
@@ -177,16 +174,14 @@ public class MemberDAO extends DBConnPool{  //DB 연결
 					Decoder decoder = Base64.getDecoder();
 					byte[] decodedBytes = decoder.decode(dbpasswd);
 					String decodedTxt = new String(decodedBytes);
-					
+					// decodedTxt : 디코딩시킨 DB의 패스워드
 				
 					if ( orgPass.equals(decodedTxt)) {
-						//DB의 passwd 와 폼에서 넘겨온 Pass가 같을때  처리할 부분
-							//DB에서 select 레코드를 DTO (LogonDataBean) 에 Setter주입 해서 값을 반환 
+						// 디코딩된 DB의 패스워드 와 폼에서 넘겨온 패스워드가 같을때 처리할 부분
+							//DB에서 select 레코드를 DTO (MemberDTO) 에 Setter주입 해서 값을 반환 
 						
 						//member 객체 생성 후 DB의 rs 에 저장된 값을 setter 주입후 리턴 
 						dto = new MemberDTO();    //
-						
-
 						
 					    dto.setMember_id(rs.getString("member_id"));
 					    dto.setMember_name(rs.getString("member_name"));
@@ -196,19 +191,20 @@ public class MemberDAO extends DBConnPool{  //DB 연결
 					    dto.setMember_pw(rs.getString("member_pw"));
 					    
 					} else { 
-						//DB의 passwd 와 폼에서 넘겨온 Pass가 다를때 처리할 부분 
+						//DB의 member_pw 와 폼에서 넘겨온 member_pw가 다를때 처리할 부분 
 					}
 					
 				}
 		
 			}catch (Exception e) {
 				e.printStackTrace();
-				System.out.println("회원 정보 읽어 오는 중 예외 발생");
+				System.out.println("회원 정보 읽어 오는 중 예외 발생" + e);
 			}finally {
-//				instance.close(); 
+				
 			}
 			return dto; 			
-		}
+			
+		}	// getMember() 종료
 		
 		// 5. 회원 정보 수정 처리 (modifyPro.jsp) 에서 회원정보를 수정 처리하는 메소드
 		public int updateMember(MemberDTO dto) {
@@ -218,8 +214,8 @@ public class MemberDAO extends DBConnPool{  //DB 연결
 			
 			//ID 와 패스워드 를 확인후 업데이트 진행 . 
 			
-			
 			try {
+				// orgPass : 폼에서 받은 패스워드
 				String orgPass = dto.getMember_pw(); 
 				System.out.println(orgPass);
 				byte[] targetBytes = orgPass.getBytes();
@@ -228,16 +224,12 @@ public class MemberDAO extends DBConnPool{  //DB 연결
 				byte[] encodedByte =encoder.encode(targetBytes);
 				String encoderText = new String(encodedByte);
 				
-				
 				String sql = "select member_pw from boardMember where member_id = ?" ; 
 				ps = conn.prepareStatement(sql); 
 				ps.setString(1, dto.getMember_id());
 				rs = ps.executeQuery();  
 				
 				if (rs.next()) {	// 해당 아이디가 DB에 존재한다.
-					//폼에서 넘긴 패스워드와 DB에서 가져온 패스워드가 일치하는지 확인후 처리 
-					String dbpasswd = rs.getString("member_pw"); 
-//					if (encoderText.equals(dbpasswd)) {
 					
 						//DTO (member)에서 들어온 값을 DB에 UPDATE 
 						       sql = "update boardMember set member_name = ?, member_address = ?, member_tel= ?, member_age = ?, member_pw = ? " ;  
@@ -248,10 +240,8 @@ public class MemberDAO extends DBConnPool{  //DB 연결
 						ps.setString(2, dto.getMember_address());
 						ps.setString(3, dto.getMember_tel());
 						ps.setInt(4, dto.getMember_age());
-						ps.setString(5, encoderText);
+						ps.setString(5, encoderText); 		// 인코딩 시킨 패스워드
 						ps.setString(6, dto.getMember_id());
-						
-						
 						
 						ps.executeUpdate();
 						result = 1; 	//update 성공시 result 변수에 1 을 할당. 	
@@ -259,19 +249,17 @@ public class MemberDAO extends DBConnPool{  //DB 연결
 					}else {
 						result = 0;   //ID는 존재하고 패스워드 일치 하지 않는 경우 
 					}
-								
-//				} else {	// 해당 아이디가 DB에 존재한다. 			
-//				}
 						
 			}catch (Exception e) {
 				e.printStackTrace();
 				System.out.println("회원 정보 수정시 예외 발생" + e);
 			}finally {
-//				instance.close();
+				
 			}
 						
-			return result; 				 
-		}
+			return result; 		
+			
+		}	// updateMember () 종료
 			
 		
 		
@@ -281,7 +269,7 @@ public class MemberDAO extends DBConnPool{  //DB 연결
 						 // result = 1 : 회원 탈퇴 성공 
 			
 			try {
-				
+				// orgPass : 폼에서 가져온 패스워드
 				String orgPass = member_pw; 
 				
 				byte[] targetBytes = orgPass.getBytes();
@@ -301,9 +289,8 @@ public class MemberDAO extends DBConnPool{  //DB 연결
 				if (rs.next()) {  //id가 DB에 존재 
 					String dbpasswd = rs.getString("member_pw"); 
 					
-					if (encoderText.equals(dbpasswd)) {	// 암호화 후 비교
+					if (encoderText.equals(dbpasswd)) {	// 폼에서 받은 패스워드를 암호화 후 db의 패스워드와 비교
 	
-					//if (orgPass.equals(dbpasswd)) {
 					sql = "delete boardMember where member_id = ?"; 
 						
 						ps = conn.prepareStatement(sql); 
@@ -317,10 +304,9 @@ public class MemberDAO extends DBConnPool{  //DB 연결
 				e.printStackTrace();
 				System.out.println("회원 탈퇴시 예외가 발생 했습니다");
 			} finally {
-//				instance.close();
+				
 			}
-			
-			return result; 			// 성공시 x = 1, 실패시 x= -1 
-		}
-	
-} 	//class
+			return result; 			// 성공시 x = 1, 실패시 x= -1
+		}	// deleteMember() 종료
+		
+} 	//class 종료

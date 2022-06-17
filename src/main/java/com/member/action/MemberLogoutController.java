@@ -12,8 +12,10 @@ public class MemberLogoutController extends HttpServlet {
 	
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		HttpSession session = request.getSession();
-		session.removeAttribute("id");
 		
+		// 세션 종료
+		session.removeAttribute("id");
+		// 로그인 폼으로 이동
 		request.getRequestDispatcher("loginForm.jsp").forward(request, response);
 	}
 

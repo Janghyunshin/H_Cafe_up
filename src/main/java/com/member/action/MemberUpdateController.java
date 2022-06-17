@@ -43,20 +43,18 @@ public class MemberUpdateController extends HttpServlet {
 		System.out.println("테스트 :" + result);
 		
 		response.setContentType("text/html; charset=utf-8");
+		// PrintWriter 객체 생성
 		PrintWriter out = response.getWriter();
-//		if(result == false) {
 		if(result == 0) {
 			System.out.println("수정 실패");
 			
 			out.println("<script>alert('회원정보 수정 실패!');");
 			out.println("location.href='update.do';</script>");
 			// 회원가입 실패시 콘솔 창에 정보 출력
-			System.out.println("회원정보 수정 실패");
-			out.flush();
+			System.out.println("회원정보 수정 실패"); 	
+			out.flush(); 	// flush() 없을 시 Printwriter 실행되지 않음
 			
 		} else {
-			System.out.println("수정 성공");
-			// 현재 out.println 먹통
 		
 			out.println("<script>");
 			out.println("alert('회원정보 수정 성공!');");
@@ -64,12 +62,10 @@ public class MemberUpdateController extends HttpServlet {
 			out.println("</script>");
 			out.flush();
 			
-			
 			// 회원가입 성공시 콘솔 창에 정보 출력
 			System.out.println("회원정보 수정 성공");
 		}
 		
-		//request.getRequestDispatcher("/h_login/update.jsp").forward(request, response);
 
 		
 	}

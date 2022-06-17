@@ -27,7 +27,7 @@ public class WriteController extends HttpServlet {
 		//List.jsp(view 페이지) 에서 글쓰기를 클릭 했을때 글쓰기 뷰페이지(Write.jsp)
 		
 		
-		// 추가 *1*
+		// 세션값을 받기 위해
 		HttpSession session = req.getSession();
 		//뷰페이지로 이동
 		req.getRequestDispatcher("/h_board/Write.jsp").forward(req, resp);
@@ -45,7 +45,6 @@ public class WriteController extends HttpServlet {
 		ServletContext application = getServletContext();
 		int maxPostSize =Integer.parseInt(application.getInitParameter("maxPostSize"));	
 		
-		
 		//1.파일 업로드 처리====================================
 			//saveDtriectory 변수에 업로드할 파일을 저장할 서버의 물리적인 경로를 저장.
 		//파일업로드 객체 생성
@@ -62,7 +61,6 @@ public class WriteController extends HttpServlet {
 		
 		//2.파일 업로드 외 처리(form의 변수 값처리)===================================
 			//폼에서 넘겨받은 값을 받아서 DTO(VO)에 Setter 주입을 하고 DAO에 Insert 매소드에 던져줌
-		
 		
 		HcDTO dto = new HcDTO();
 		dto.setName(mr.getParameter("name"));
@@ -82,9 +80,6 @@ public class WriteController extends HttpServlet {
 			String newFileName =now + ext;
 			System.out.println("newFileName : " +newFileName);
 			
-			
-			
-			
 			File oldFile = new File(saveDirectory +File.separator + fileName);
 			File newFile = new File(saveDirectory +File.separator + newFileName);
 				System.out.println("oldFIle : " +oldFile);
@@ -96,7 +91,6 @@ public class WriteController extends HttpServlet {
 			
 		}
 		
-		//DTO 객
 		HcDAO dao = new HcDAO();
 		
 		int result =dao.insertWrite(dto);
@@ -110,14 +104,12 @@ public class WriteController extends HttpServlet {
 			resp.sendRedirect("../h_board/list.do");
 			
 		//글쓰기 실패일때 이동할 페이지
-		}else {
+		} else {
 			resp.sendRedirect("../h_board/write.do");
 		}
 		
 		
-		
 	}
-	
 	
 
 }
