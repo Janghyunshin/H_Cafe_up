@@ -50,7 +50,7 @@
   <!-- 서블릿 (servlet): *.java 파일을 html로 출력
 				     요즘은 서블릿은 controller를 뜻하기도 함 -->
   
-<!-- 멤버 서블릿(Controller) 매핑 설정 -->
+<!-- Member 서블릿(Controller) 매핑 설정 -->
  <!-- h_login 의 로그인 Controller 매핑 -->
   <servlet>
   	<display-name>MemberLoginController</display-name>
@@ -106,7 +106,7 @@
   	<url-pattern>/h_login/delete.do</url-pattern>
   </servlet-mapping>  
   
-<!-- 게시판 서블릿(Controller) 매핑 설정 -->
+<!-- Board (Controller) 매핑 설정 -->
   <!-- h_board의 글목록 보기 Controller 매핑 -->
   <servlet>
     <servlet-name>HPBoardList</servlet-name>
@@ -165,7 +165,6 @@
     <servlet-name>HPBoardDownload</servlet-name>
     <url-pattern>/h_board/download.do</url-pattern>
   </servlet-mapping>
-  
   
      <!-- h_board의 글 수정/삭제 Controller 매핑 -->
   <servlet>

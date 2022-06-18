@@ -22,7 +22,7 @@ public class MemberUpdateController extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
 		HttpSession session = request.getSession();
-		// 뷰 페이지로 이동
+		// 뷰 페이지로 Forward
 		 request.getRequestDispatcher("/h_login/update.jsp").forward(request, response);
 	}
 

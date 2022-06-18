@@ -6,7 +6,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>List.jsp (파일첨부 게시판 : MVC)</title>
+<title>리뷰 / 질문 게시판</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
     <!-- 부트 스트랩 링크 -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -41,7 +41,7 @@
 
 
 	<center>
-	<h2> 리뷰 게시판 </h2>
+	<h2> 리뷰 / 질문 게시판 </h2>
 	<br><br>
 	</center>
 	<!-- 검색폼 -->

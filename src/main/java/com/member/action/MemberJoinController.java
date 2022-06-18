@@ -18,7 +18,10 @@ import utils.JSFunction;
 public class MemberJoinController extends HttpServlet {
 	
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		//GET 방식 처리
 		
+		//뷰페이지로 Forward
+		 request.getRequestDispatcher("/h_login/joinForm.jsp").forward(request, response);
 	}
 	
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
@@ -40,17 +43,14 @@ public class MemberJoinController extends HttpServlet {
 		response.setContentType("text/html; charset=utf-8");
 		// PrintWriter 객체 생성
 		PrintWriter out = response.getWriter();
-		if(succ == 0) {
+		if(succ == 0) {		// 회원가입 실패시
 			
 			out.println("<script>alert('회원가입 실패!');");
 			out.println("location.href='join.do';</script>");
 			
-			// 회원가입 실패시 콘솔 창에 정보 출력
-			System.out.println("회원가입 실패");
-			
 			out.flush(); 	// flush() 실행하지 않을시 PrintWriter가 작동되지 않음
 			
-		} else {
+		} else {			// 회원가입 성공시
 			
 			out.println("<script>");
 			out.println("alert('회원가입 성공!');");
@@ -58,11 +58,7 @@ public class MemberJoinController extends HttpServlet {
 			out.println("</script>");
 			out.flush();	// flush() 실행하지 않을시 PrintWriter가 작동되지 않음
 			
-			// 회원가입 성공시 콘솔 창에 정보 출력
-			System.out.println("회원가입 성공");
 		}
-		
-
 		
 		
 	}

@@ -6,7 +6,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>파일 첨부형 게시판</title>
+<title>리뷰 & 질문 글쓰기 </title>
     <link rel="stylesheet"  type="text/css"  href="#">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
     <!-- 부트 스트랩 링크 -->
@@ -78,7 +78,7 @@ function checkSize(input) {
 
 <center>
 	<br><br>	
-	<h2> 리뷰 글쓰기 (파일 첨부 가능) </h2>
+	<h2> 리뷰 / 질문 글쓰기 (파일 첨부 가능) </h2>
 	<br><br>
 </center>
 
@@ -130,7 +130,7 @@ function checkSize(input) {
 	<tr>
 		<td>비밀번호</td>
 		<td>
-			<input type="password" name="pass" style="width:100px;"/>
+			<input type="password" name="pass" style="width:150px;"/>
 		</td>
 	</tr>
 	<tr>

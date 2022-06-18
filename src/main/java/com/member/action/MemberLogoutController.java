@@ -15,7 +15,7 @@ public class MemberLogoutController extends HttpServlet {
 		
 		// 세션 종료
 		session.removeAttribute("id");
-		// 로그인 폼으로 이동
+		// 로그인 폼으로 Forward
 		request.getRequestDispatcher("loginForm.jsp").forward(request, response);
 	}
 

@@ -20,7 +20,7 @@ public class MemberLoginController extends HttpServlet {
 		// index.html 에서 자동이동
 		// joinForm.jsp 에서 로그인을 클릭 했을때  로그인 페이지(loginForm.jsp)
 		
-		//뷰페이지로 이동
+		//뷰페이지로 Forward
 		 request.getRequestDispatcher("/h_login/loginForm.jsp").forward(request, response);
 		
 	}
@@ -37,21 +37,20 @@ public class MemberLoginController extends HttpServlet {
 		response.setContentType("text/html; charset=utf-8"); 
 		// Printwriter 객체 생성
 		PrintWriter out = response.getWriter();
-		if(result == 0) {
+		if(result == 0) { 				// 비밀번호 불일치 시
 			out.println("<script>");
 				out.println("alert('비밀번호가 일치하지 않습니다!');");
 				out.println("location.href = 'login.do';");
 			out.println("</script>");
-			out.flush();
-			//response.sendRedirect("/h_login/loginform.jsp");
+			out.flush();		// flush()
 
-		} else if(result == -1) {
+		} else if(result == -1) {  		// 아이디 불일치 시
 			out.println("<script>");
 				out.println("alert('아이디가 존재하지 않습니다!');");
 				out.println("location.href = 'login.do';");
 			out.println("</script>");
-			out.flush();
-			//response.sendRedirect("/h_login/loginform.jsp");
+			out.flush();		// flush()
+			
 
 		} else {	//로그인 성공
 			HttpSession session = request.getSession();
@@ -60,8 +59,9 @@ public class MemberLoginController extends HttpServlet {
 			out.println("alert('로그인에 성공했습니다!');");
 			out.println("location.href = '../h_main/index.jsp';");
 			out.println("</script>");
-			out.flush();
-			//response.sendRedirect("../h_main/index.jsp");
+			
+			out.flush();		// flush()를 실행하지 않을시 Printwriter가 작동되지 않음
+			
 		}
 	
 	

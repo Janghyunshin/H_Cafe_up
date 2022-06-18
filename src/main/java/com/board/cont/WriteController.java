@@ -23,13 +23,11 @@ public class WriteController extends HttpServlet {
 
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-		//Get 방식 요청 처리
 		//List.jsp(view 페이지) 에서 글쓰기를 클릭 했을때 글쓰기 뷰페이지(Write.jsp)
 		
-		
-		// 세션값을 받기 위해
+		//세션 가져오기
 		HttpSession session = req.getSession();
-		//뷰페이지로 이동
+		//뷰페이지로 Forward
 		req.getRequestDispatcher("/h_board/Write.jsp").forward(req, resp);
 		
 	}

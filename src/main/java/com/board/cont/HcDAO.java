@@ -192,7 +192,7 @@ public class HcDAO extends DBConnPool {
 		
 		try {
 			String query ="INSERT INTO hpboard(idx,name,title,content,ofile,sfile,pass)"
-					+ " VALUES (seq_board_num.nextval,?,?,?,?,?,?) ";
+					+ " VALUES (seq_hpboard_num.nextval,?,?,?,?,?,?) ";
 			ps = conn.prepareStatement(query);
 			ps.setString(1, dto.getName());
 			ps.setString(2, dto.getTitle());

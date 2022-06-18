@@ -20,7 +20,7 @@ public class MemberDeleteController extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// 세션 값을 받기 위해
 		HttpSession session = request.getSession();
-		// 뷰 페이지로 이동 
+		// 뷰 페이지로 Forward
 		request.getRequestDispatcher("/h_login/delete.jsp").forward(request, response);
 	}
 

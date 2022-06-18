@@ -38,11 +38,11 @@ function validateForm(form) {
 <form name="writeFrm" method="post" action="../h_board/pass.do" onsubmit="return validateForm(this);">
 <input type="hidden" name="idx" value="${param.idx }"/>
 <input type="hidden" name="mode" value="${param.mode }"/>
-<table border="1" width="90%" class="table">
-	<tr>
-		<td>비밀번호</td>
-		<td>
-			<input type="password" name="pass" sytle="width:100px;"/>
+<table border="1" width="90%" class="table" >
+	<tr align="center">
+		<td> 비밀번호 : &nbsp;
+
+			<input type="password" name="pass" style="width:200px;"/>
 		</td>
 	</tr>
 	<tr>

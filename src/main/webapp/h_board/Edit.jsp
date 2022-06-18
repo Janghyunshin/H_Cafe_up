@@ -67,7 +67,7 @@ function checkSize(input) {
 			<%if(session.getAttribute("id") != null) { %>
 			<input type="text" name="name" style="width:150px;" value ="<%=session.getAttribute("id")%>" />
 			<%}else{ %>
-			<input type="text" name="name" style="width:150px;"/>
+			<input type="text" name="name" style="width:150px;" />
 			<%} %>
 		</td>
 	</tr>
@@ -91,9 +91,9 @@ function checkSize(input) {
 	</tr>
 	<tr>
 		<td colspan="2" align="center">
-			<button type="submit"> 작성 완료 </button> &nbsp;&nbsp;
-			<button type="reset"> RESET </button>	&nbsp;&nbsp;
-			<button type="button" onclick="location.href='../h_board/list.do';">
+			<button type="submit" class="btn btn-primary"> 작성 완료 </button> &nbsp;&nbsp;
+			<button type="reset" class="btn btn-warning"> RESET </button>	&nbsp;&nbsp;
+			<button type="button"  class="btn btn-success" onclick="location.href='../h_board/list.do';">
 				목록 바로가기
 			</button>
 		</td>

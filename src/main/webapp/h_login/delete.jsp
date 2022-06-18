@@ -32,7 +32,7 @@
 	        </div>
 			<div class="int_area">
 				<label for="member_pw">비밀번호</label>
-	          	<input name="member_pw" type="password" required="required" placeholder="8~16자 숫자,문자,특수문자를 사용한 비밀번호" autocomplete="off"/>
+	          	<input name="member_pw" type="password" required="required" placeholder="비밀번호를 입력해 주세요" autocomplete="off"/>
 	        </div>
 
 			<tr>

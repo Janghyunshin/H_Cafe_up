@@ -21,6 +21,7 @@ public class MemberDAO extends DBConnPool{  //DB 연결
 	public int joinMember(MemberDTO dto) {
 			
 		int succ = 0;
+		// SQL 문장 작성
 		String sql = "INSERT INTO boardMember VALUES (?, ?, ?, ?, ?, ?)";
 		
 		try {
@@ -33,15 +34,8 @@ public class MemberDAO extends DBConnPool{  //DB 연결
 			Encoder encoder =Base64.getEncoder();
 			byte[] encodedBytes = encoder.encode(targetBytes);
 			String encodedTxt = new String(encodedBytes);
-		
-			//디코딩
-			Decoder decoder = Base64.getDecoder();
-			byte[] decodedBytes = decoder.decode(encodedBytes);
-			String decodedTxt = new String(decodedBytes);
-			
-			// SQL 문장 작성
-			
-			// try-catch 블록 작성 후 PreapareStatement 설정
+
+				//  PreapareStatement 설정
 			
 				ps = conn.prepareStatement(sql);
 				ps.setString(1, dto.getMember_id());
@@ -206,7 +200,7 @@ public class MemberDAO extends DBConnPool{  //DB 연결
 			
 		}	// getMember() 종료
 		
-		// 5. 회원 정보 수정 처리 (modifyPro.jsp) 에서 회원정보를 수정 처리하는 메소드
+		// 5. 회원 정보 수정 처리 (update.jsp) 에서 회원정보를 수정 처리하는 메소드
 		public int updateMember(MemberDTO dto) {
 			int result = -1 ; 	// result = - 1 : 아이디가 DB에 존재 하지 않는 경우 
 						 		// result = 0   : 아이디는 존재하고 비밀번호가 틀린 경우 
@@ -263,7 +257,7 @@ public class MemberDAO extends DBConnPool{  //DB 연결
 			
 		
 		
-		// 6. 회원 탈퇴 처리 ( deletePro.jsp ) 에서 회원 정보 삭제 메소드 
+		// 6. 회원 탈퇴 처리 ( delete.jsp ) 에서 회원 정보 삭제 메소드 
 		public int deleteMember(String member_id, String member_pw) {
 			int result = -1;  // result = -1 : 회원 탈퇴 실패 
 						 // result = 1 : 회원 탈퇴 성공 
@@ -277,8 +271,6 @@ public class MemberDAO extends DBConnPool{  //DB 연결
 				Encoder encoder = Base64.getEncoder();
 				byte[] encodedByte =encoder.encode(targetBytes);
 				String encoderText = new String(encodedByte);
-				
-				
 				
 				String sql = "SELECT member_pw FROM boardMember WHERE member_id = ?"; 
 				ps = conn.prepareStatement(sql); 
